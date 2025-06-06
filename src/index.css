@@ -1,0 +1,12 @@
+
+
+
+.link-dark { text-decoration: none;
+color:black ;
+font-size: 15px;}
+.btn-toggle{font-size: 20px ;}
+.sidebar{height:100%}
+.content {
+  flex-grow: 1;
+  /* Votre style de contenu ici */
+}

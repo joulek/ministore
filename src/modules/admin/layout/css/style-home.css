@@ -1,0 +1,152 @@
+/* --- Fond global --- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  height: 100%;
+   background-image: none !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* --- CONTAINER GLOBAL --- */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- TOPBAR --- */
+.topbar {
+  width: 100%;
+  height: 90px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.0);
+}
+
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.user-wrapper {
+  max-width: 400px;       /* largeur max du bloc utilisateur */
+  margin-left: auto;
+  margin-right: 50px;     /* décalage depuis la droite */
+}
+
+.user-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.username {
+  color: #333 !important;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  width: 250px;
+  height: calc(100vh - 90px);
+  position: fixed;
+  top: 90px;
+  left: 0;
+  padding: 20px;
+  background-color: #ffffff26;
+  backdrop-filter: blur(20px);
+  color: #222;
+  overflow-y: auto;
+  z-index: 9;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: #222 !important;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #000 !important;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  margin-left: 250px;
+  margin-top: 90px;
+  padding: 20px;
+  background-color: #ffffff !important;
+  border-radius: 10px;
+  min-height: calc(100vh - 90px);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  position: relative;
+}
+.menu-title {
+  font: small-caps bold 24px/1 sans-serif;
+}
+
+/* Décalage vers le bas des éléments du menu sous "GESTION" */
+.sidebar .btn-toggle {
+  padding-left: 50px;
+  margin-top: 15px; /* <--- Ajouté pour espacer verticalement */
+}
+.sidebar .btn-toggle li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.sidebar .btn-toggle li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  width: 2px;
+  background-color: #555; /* couleur de la ligne */
+  border-radius: 1px;
+}
+.sidebar .btn-toggle li a:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+  transform: translateX(4px);
+  transition: all 0.2s ease-in-out;
+}
+/* Style pour le lien actif */
+
+.sidebar a.active-link {
+  background-color: #d3e0ea;
+  font-weight: bold;
+  color: #000 !important;
+  padding: 12px 20px;     /* Augmente l’espace interne */
+  font-size: 1.1rem;      /* Agrandit le texte */
+  border-radius: 8px;     /* Coins arrondis plus doux */
+  transition: all 0.2s ease-in-out; /* Animation douce */
+}
