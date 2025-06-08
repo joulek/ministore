@@ -1,34 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "./footer";
 import { Navbar } from "react-bootstrap";
+
 const Ministore = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: "iPhone 14",
+      price: 4200,
+      image: "https://www.it-tunisie.tn/wp-content/uploads/2022/09/APPLE_iPhone_14_Pro-removebg-preview.png.webp"
+    },
+    {
+      id: 2,
+      name: "Samsung Galaxy S22",
+      price: 3900,
+      image: "https://techland.tn/uploads/media/KlTeuJtXLWxthRE3HNbNIgyFR5AYiJwzuAztOQ6E.jpg"
+    },
+    {
+      id: 3,
+      name: "Xiaomi Redmi Note 12",
+      price: 1300,
+      image: "https://www.sstech.tn/wp-content/uploads/2023/04/smartphone-xiaomi-redmi-note-12-pro-5g-8go-256go-bleu.webp"
+    },
+    {
+      id: 4,
+      name: "Oppo Reno 8",
+      price: 1700,
+      image: "https://electrotounes.tn/19875-large_default/smartphone-oppo-reno8-5g-8go256go-noir.jpg"
+    },
+    {
+      id: 5,
+      name: "Google Pixel 7",
+      price: 3500,
+      image: "https://gogizmo.in/wp-content/uploads/2024/11/Google-Pixel-7-Pro-Hazel-1.png"
+    },
+    {
+      id: 6,
+      name: "Huawei P50",
+      price: 3100,
+      image: "https://hmall.tn/wp-content/uploads/2023/02/P50-Pro-2.jpg"
+    },
+    {
+      id: 7,
+      name: "Realme 10 Pro",
+      price: 1400,
+      image: "https://realmestore.tn/wp-content/uploads/2023/01/1669360639984-768x768.png"
+    },
+    {
+      id: 8,
+      name: "OnePlus Nord CE 3",
+      price: 2100,
+      image: "https://oasis.opstatics.com/content/dam/oasis/page/2023/global/product/larry/specs/product-green.png"
+    },
+    {
+      id: 9,
+      name: "Motorola Edge 40",
+      price: 2900,
+      image: "https://www.01net.com/app/uploads/lab/zboW8ROyaFLtWhLS1ABRcuV8EuOKf0uWjRnw8WHf.jpg"
+    },
+    {
+      id: 10,
+      name: "Infinix Zero 5G",
+      price: 1200,
+      image: "https://www.it-tunisie.tn/wp-content/uploads/2022/02/INFINIX-ZERO-5G-NOIR.png.webp"
+    }
+  ]);
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get("http://localhost:8084/produits")
-      .then((response) => {
-        setProducts(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Erreur lors du chargement des produits :", error);
-        setLoading(false);
-      });
-  }, []);
-
-  const getImageUrl = (image) => {
-    try {
-      return new URL(image).href;
-    } catch (e) {
-      return `/images/${image}`;
-    }
-  };
 
   const handleAddToCart = (product) => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -47,35 +87,28 @@ const Ministore = () => {
 
   return (
     <div className="bg-gray-50 text-gray-800 min-h-screen">
-      {/* Navbar */}
       {/* Hero Section */}
       <section className="relative bg-cover bg-center py-24" style={{
         backgroundImage: "url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&q=80)",
       }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="container mx-auto px-6 text-center relative z-10">
-          <motion.h1
-            className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight drop-shadow-lg"
+          <motion.h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+            transition={{ duration: 0.8 }}>
             Bienvenue sur MiniStore
           </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl text-white mb-8 font-light max-w-2xl mx-auto drop-shadow-md"
+          <motion.p className="text-lg md:text-xl text-white mb-8 font-light max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+            transition={{ duration: 0.8, delay: 0.2 }}>
             Votre boutique incontournable pour les gadgets et accessoires tendance
           </motion.p>
-          <motion.a
-            href="#products"
+          <motion.a href="#products"
             className="inline-block bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition duration-300"
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
+            transition={{ type: "spring", stiffness: 300 }}>
             Magasiner maintenant
           </motion.a>
         </div>
@@ -85,11 +118,7 @@ const Ministore = () => {
       <section id="products" className="container mx-auto py-16 px-4">
         <h2 className="text-3xl font-bold text-center text-indigo-600 mb-12">Nos Produits</h2>
 
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-600"></div>
-          </div>
-        ) : products.length === 0 ? (
+        {products.length === 0 ? (
           <p className="text-center text-gray-500 text-lg">Aucun produit trouvé.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -103,31 +132,17 @@ const Ministore = () => {
               >
                 <div className="relative">
                   <img
-                    src={getImageUrl(product.image)}
+                    src={product.image}
                     alt={product.name}
                     className="w-full h-56 object-contain p-4 bg-gray-50"
                   />
-                  {product.discount && (
-                    <span className="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      -{product.discount}%
-                    </span>
-                  )}
                 </div>
                 <div className="p-6">
-                  <h5 className="text-lg font-bold text-gray-800 mb-2">
-                    {product.name}
-                  </h5>
+                  <h5 className="text-lg font-bold text-gray-800 mb-2">{product.name}</h5>
                   <div className="flex items-center justify-between mb-4">
-                    <p className="text-indigo-600 font-semibold text-lg">
-                      {product.price} DT
-                    </p>
-                    {product.originalPrice && (
-                      <p className="text-gray-400 text-sm line-through">
-                        {product.originalPrice} DT
-                      </p>
-                    )}
+                    <p className="text-indigo-600 font-semibold text-lg">{product.price} DT</p>
                   </div>
-                  <button 
+                  <button
                     className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2 px-4 rounded-full flex items-center justify-center gap-2 hover:from-indigo-700 hover:to-purple-700 transition duration-300 shadow-sm"
                     onClick={() => handleAddToCart(product)}
                   >
