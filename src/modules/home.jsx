@@ -10,62 +10,38 @@ const Ministore = () => {
       id: 1,
       name: "iPhone 14",
       price: 4200,
-      image: "https://via.placeholder.com/150?text=iPhone+14"
+      image: "https://www.it-tunisie.tn/wp-content/uploads/2022/09/APPLE_iPhone_14_Pro-removebg-preview.png.webp"
     },
     {
       id: 2,
-      name: "Samsung Galaxy S22",
+      name: "iPhone 10",
       price: 3900,
-      image: "https://via.placeholder.com/150?text=Galaxy+S22"
+      image: "https://www.mega.tn/assets/uploads/img/pr_telephonie_mobile/1518877680_313.jpg"
     },
     {
       id: 3,
-      name: "Xiaomi Redmi Note 12",
+      name: "iPhone 11",
       price: 1300,
-      image: "https://via.placeholder.com/150?text=Redmi+Note+12"
+      image: "https://electrotounes.tn/20859-large_default/iphone-11-4go64go-blanc.jpg"
     },
     {
       id: 4,
-      name: "Oppo Reno 8",
+      name: " Pc Lenovo ",
       price: 1700,
-      image: "https://via.placeholder.com/150?text=Oppo+Reno+8"
+      image: "https://navicom.tn/wp-content/uploads/2025/02/Pc-portable-Lenovo-ideapad-1-15AMN7-82VG00MHFG-navicom-0.webp"
     },
     {
       id: 5,
-      name: "Google Pixel 7",
+      name: "PC msi",
       price: 3500,
-      image: "https://via.placeholder.com/150?text=Pixel+7"
-    },
-    {
-      id: 6,
-      name: "Huawei P50",
-      price: 3100,
-      image: "https://via.placeholder.com/150?text=Huawei+P50"
-    },
-    {
-      id: 7,
-      name: "Realme 10 Pro",
-      price: 1400,
-      image: "https://via.placeholder.com/150?text=Realme+10+Pro"
-    },
-    {
-      id: 8,
-      name: "OnePlus Nord CE 3",
-      price: 2100,
-      image: "https://via.placeholder.com/150?text=Nord+CE+3"
+      image: "https://informatica.tn/wp-content/uploads/2022/08/msi-gf65-thin-2.jpg"
     },
     {
       id: 9,
-      name: "Motorola Edge 40",
+      name: "Airpods",
       price: 2900,
-      image: "https://via.placeholder.com/150?text=Edge+40"
+      image: "https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/121203-airpods-4.png"
     },
-    {
-      id: 10,
-      name: "Infinix Zero 5G",
-      price: 1200,
-      image: "https://via.placeholder.com/150?text=Infinix+Zero+5G"
-    }
   ]);
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
